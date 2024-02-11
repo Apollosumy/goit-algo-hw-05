@@ -4,9 +4,10 @@ def input_error(func):
     def inner(*args, **kwargs):
         try:
             return func(*args, **kwargs)
-        except (KeyError, ValueError, IndexError) as e:
-            return str(e)
-
+        except KeyError as ke:
+            return f"KeyError: {ke}. Contact not found. Try again"
+        except ValueError as ve:
+            return f"ValueError: {ve}. Invalid command format. Repeat with correct values"
     return inner
 
 @input_error
